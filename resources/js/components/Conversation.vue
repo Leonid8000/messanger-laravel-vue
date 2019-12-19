@@ -33,5 +33,7 @@
 <style>
     .conversation{
         /*flex: 5;*/
+        /*background: red;*/
+        float: left;
     }
 </style>

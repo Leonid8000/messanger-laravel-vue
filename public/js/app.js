@@ -1847,6 +1847,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -6615,7 +6617,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.conversation{\n    /*flex: 5;*/\n}\n", ""]);
+exports.push([module.i, "\n.conversation{\n    /*flex: 5;*/\n    /*background: red;*/\n    float: left;\n}\n", ""]);
 
 // exports
 
@@ -38139,23 +38141,25 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "chat-app" },
-    [
-      _c("ContactList", {
-        staticClass: "col-md-2",
-        attrs: { contacts: _vm.contacts },
-        on: { selected: _vm.startConversationWith }
-      }),
-      _vm._v(" "),
-      _c("Conversation", {
-        staticClass: "col-md-8 offset-2",
-        attrs: { contact: _vm.selectedContact, messages: _vm.messages }
-      })
-    ],
-    1
-  )
+  return _c("div", { staticClass: "chat-app container-fluid" }, [
+    _c(
+      "div",
+      { staticClass: "row" },
+      [
+        _c("ContactList", {
+          staticClass: "col-md-2",
+          attrs: { contacts: _vm.contacts },
+          on: { selected: _vm.startConversationWith }
+        }),
+        _vm._v(" "),
+        _c("Conversation", {
+          staticClass: "col-md-10",
+          attrs: { contact: _vm.selectedContact, messages: _vm.messages }
+        })
+      ],
+      1
+    )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true

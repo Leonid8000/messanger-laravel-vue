@@ -1,7 +1,9 @@
 <template>
-    <div class="chat-app">
-        <ContactList :contacts="contacts" @selected="startConversationWith" class="col-md-2"/>
-        <Conversation :contact="selectedContact" :messages="messages" class="col-md-8 offset-2"/>
+    <div class="chat-app container-fluid">
+        <div class="row">
+            <ContactList :contacts="contacts" @selected="startConversationWith" class="col-md-2"/>
+            <Conversation :contact="selectedContact" :messages="messages" class="col-md-10"/>
+        </div>
     </div>
 </template>
 
