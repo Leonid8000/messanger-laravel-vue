@@ -1,0 +1,153 @@
+1 install laravel 5.8
+2 creat db connection
+3 php artisan make:auth
+4 user migration add:
+	$table->string('phone')->nullable();
+	$table->string('profile_image')->nullable();
+
+5 user factory add:
+	'phone' => $faker->phoneNumber,
+        'profile_image' => 'http://via.placeholder.com/150x150',
+	
+6 php artisan migrate
+
+7 php artisan tinker
+	factory(App\User::class, 15)->create()
+
+8 php artisan make:migration create_messages_table --create="messages"
+
+9 php artisan make:model Message
+
+9 message migration add:
+	    $table->integer('from')->unsigned();
+            $table->integer('to')->unsigned();
+            $table->text('text');
+php artisan migrate
+
+10  model message:
+	potected $guarded = [];
+
+11 create message factory
+	user factory add:
+$factory->define(\App\Message::class, function (Faker $faker) {
+    do{
+        $from = rand(1,15);
+        $to = rand(1,15);
+    } while($from === $to);
+// есть range
+    return [
+        'from' => $from,
+        'to' => $to,
+        'text' => $faker->sentence,
+    ];
+});
+
+php artisan tinker
+	factory(App\Message::class, 150)->create()
+
+12 App.js
+	Vue.component('chat-app', require('./components/ChatApp.vue').default);
+И переименовать компонент Vue ChatApp.vue
+
+13 npm install
+	npm run watch
+
+14 ChatApp.vue
+	<template>
+    <div class="chat-app">
+        <Conversation :contact="selectedContact" :messages="messages"/>
+        <ContactList :contacts="contacts" />
+    </div>
+</template>
+
+<script>
+    export default {
+        data() {
+            return {
+                selectedContact: null,
+                messages: [],
+                contacts: []
+            };
+        },
+        mounted() {
+            axios.get('/contacts')
+                    .then((response) => {
+                this.contacts = response.data;
+            });
+        }
+    }
+</script>
+
+15 Создать route
+	Route::get('/contacts', 'ContactsController@getContacts')->name('contacts');
+
+16 php artisan make:controller ContactsController
+
+17 ContactsController
+  public function getContacts(){
+        $contacts = User::all();
+
+        return response()->json($contacts);
+    }
+При роуте contacts выведуться все юзеры в формате json
+
+18 create component Conversation
+<template>
+    <div class="conversation"></div>
+</template>
+
+<script>
+    export default {
+
+    }
+</script>
+
+19 create component ContactList
+<template>
+    <div class="contact-list"></div>
+</template>
+
+<script>
+    export default {
+
+    }
+</script>
+
+20 Chat App
+<template>
+    <div class="chat-app">
+        <Conversation :contact="selectedContact" :messages="messages"/>
+        <ContactList :contacts="contacts" />
+    </div>
+</template>
+
+<script>
+    import Conversation from './Conversation';
+    import ContactList from './ContactList';
+
+    export default {
+        data() {
+            return {
+                selectedContact: null,
+                messages: [],
+                contacts: []
+            };
+        },
+        mounted() {
+            axios.get('/contacts')
+                    .then((response) => {
+                            console.log(response.data);
+                            this.contacts = response.data;
+            });
+        },
+        components: {Conversation, ContactList}
+    }
+    console.log()
+</script>
+
+21 home.blade
+ <chat-app :user="{{ auth()->user() }}"></chat-app>
+
+22 Изменить ChatApp
+	
+
