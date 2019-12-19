@@ -1,5 +1,5 @@
 <template>
-    <div class="contact-list col-lg-2 col-12">
+    <div class="contact-list">
         <ul>
             <li v-for="(contact, index) in contacts" :key="contact.id" @click="selectContact(index, contact)" :class="{ 'selected': index == selected}">
                 <div class="avatar">
@@ -42,10 +42,11 @@
     .contact-list{
         border: 1px solid #eeeeee;
         overflow-y: auto;
-        height: 850px;
+        max-height: 700px;
         background: #FFFFFF;
         box-shadow: inset 13px 24px 35px #34495e;
         margin: 0;
+        /*flex: 2;*/
     }
     .contact-list li{
     list-style: none;

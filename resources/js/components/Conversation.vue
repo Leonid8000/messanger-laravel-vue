@@ -32,6 +32,6 @@
 
 <style>
     .conversation{
-
+        /*flex: 5;*/
     }
 </style>

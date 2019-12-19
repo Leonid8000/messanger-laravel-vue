@@ -1,7 +1,7 @@
 <template>
     <div class="chat-app">
-        <Conversation :contact="selectedContact" :messages="messages"/>
-        <ContactList :contacts="contacts" @selected="startConversationWith"/>
+        <ContactList :contacts="contacts" @selected="startConversationWith" class="col-md-2"/>
+        <Conversation :contact="selectedContact" :messages="messages" class="col-md-8 offset-2"/>
     </div>
 </template>
 
@@ -42,18 +42,5 @@
         },
         components: {Conversation, ContactList}
     }
-    console.log()
 </script>
 
-<!--mounted() {-->
-<!--axios.get('/contacts')-->
-<!--.then(function (response) {-->
-<!--console.log(response)-->
-<!--})-->
-<!--},-->
-
-<!--axios.get('/contacts')-->
-<!--.then((response) => {-->
-<!--console.log(response.data);-->
-<!--this.contacts = response.data;-->
-<!--});-->

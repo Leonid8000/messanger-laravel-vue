@@ -1887,7 +1887,6 @@ __webpack_require__.r(__webpack_exports__);
     ContactList: _ContactList__WEBPACK_IMPORTED_MODULE_1__["default"]
   }
 });
-console.log();
 
 /***/ }),
 
@@ -6597,7 +6596,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.contact-list{\n    border: 1px solid #eeeeee;\n    overflow-y: auto;\n    height: 850px;\n    background: #FFFFFF;\n    box-shadow: inset 13px 24px 35px #34495e;\n    margin: 0;\n}\n.contact-list li{\nlist-style: none;\n}\n.contact-list img{\n    border-radius: 50%;\n    width: 100px;\n    height:100px;\n}\n.name{\n    font-weight: bold;\n}\n", ""]);
+exports.push([module.i, "\n.contact-list{\n    border: 1px solid #eeeeee;\n    overflow-y: auto;\n    max-height: 700px;\n    background: #FFFFFF;\n    box-shadow: inset 13px 24px 35px #34495e;\n    margin: 0;\n    /*flex: 2;*/\n}\n.contact-list li{\nlist-style: none;\n}\n.contact-list img{\n    border-radius: 50%;\n    width: 100px;\n    height:100px;\n}\n.name{\n    font-weight: bold;\n}\n", ""]);
 
 // exports
 
@@ -6616,7 +6615,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.conversation{\n}\n", ""]);
+exports.push([module.i, "\n.conversation{\n    /*flex: 5;*/\n}\n", ""]);
 
 // exports
 
@@ -38144,13 +38143,15 @@ var render = function() {
     "div",
     { staticClass: "chat-app" },
     [
-      _c("Conversation", {
-        attrs: { contact: _vm.selectedContact, messages: _vm.messages }
-      }),
-      _vm._v(" "),
       _c("ContactList", {
+        staticClass: "col-md-2",
         attrs: { contacts: _vm.contacts },
         on: { selected: _vm.startConversationWith }
+      }),
+      _vm._v(" "),
+      _c("Conversation", {
+        staticClass: "col-md-8 offset-2",
+        attrs: { contact: _vm.selectedContact, messages: _vm.messages }
       })
     ],
     1
@@ -38178,7 +38179,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "contact-list col-lg-2 col-12" }, [
+  return _c("div", { staticClass: "contact-list" }, [
     _c(
       "ul",
       _vm._l(_vm.contacts, function(contact, index) {
